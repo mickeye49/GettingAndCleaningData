@@ -29,15 +29,12 @@ features <- read.table("features.txt", col.names=(c("colno", "colname")),
 X_test <- read.table("./test/X_test.txt", col.names = features$colname)
 testSubject <- read.table("./test/subject_test.txt", col.names = "subject")
 testActivity <- read.table("./test/y_test.txt", col.names = "activity")
-testFactor <- factor(testActivity$activity, levels=actLabels$actno,
-                     labels=actLabels$actname)
 
-# combine the test data and change activity column name
-allTest <- cbind(testFactor, testSubject, X_test)
-colnames(allTest)[1] <- "activity"
+# combine the test data
+allTest <- cbind(testActivity, testSubject, X_test)
 
 # clean up some data no longer needed
-rm(X_test, testSubject, testActivity, testFactor)
+#rm(X_test, testSubject, testActivity, testFactor)
 
 #
 # read the train data
@@ -45,20 +42,21 @@ rm(X_test, testSubject, testActivity, testFactor)
 X_train <- read.table("./train/X_train.txt", col.names = features$colname)
 trainSubject <- read.table("./train/subject_train.txt", col.names = "subject")
 trainActivity <- read.table("./train/y_train.txt", col.names = "activity")
-trainFactor <- factor(trainActivity$activity, levels=actLabels$actno,
-                      labels=actLabels$actname)
 
-# combine the train data and change activity column name
-allTrain <- cbind(trainFactor, trainSubject, X_train)
-colnames(allTrain)[1] <- "activity"
+# combine the train data
+allTrain <- cbind(trainActivity, trainSubject, X_train)
 
 # clean up some data no longer needed
-rm(X_train, trainSubject, trainActivity, trainFactor)
+#rm(X_train, trainSubject, trainActivity, trainFactor)
 
 #
 # combine the test and train data
 #
 allData <- rbind(allTest, allTrain)
+
+# change the activity column to a factor using the activity object
+allData$activity <- factor(allData$activity, levels=actLabels$actno,
+                      labels=actLabels$actname)
 
 #
 # create a logical vector used to select the columns for the final data set
@@ -67,7 +65,6 @@ selCols <- grepl(".*std\\(\\).*|.*mean\\(\\).*|.*meanFreq\\(\\).*", features$col
 
 # select the standard deviation and mean measurements
 allStdMean <- allData[, c(TRUE, TRUE, selCols)]
-
 
 #
 # get the column names and clean them
