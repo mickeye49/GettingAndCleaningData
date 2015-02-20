@@ -1,0 +1,114 @@
+
+The list of variables in the course project tidy data file.
+
+Fields 3 through 68 are from signals from the accelerometer and gyroscope
+from a smartphone worn by a subject performing the activity in field 2. Variables
+starting with t are from the time domain and those starting with f are from
+the frequency domain. (See the README.txt file that came with the data for
+more information).
+
+See http://www.starlino.com/imu_guide.html for information on how an
+accelerometer and gyroscope work in smart phones.
+
+NUMBER	NAME					DESCRIPTION
+======	==================		===========================
+1		subject					number ranging from 1 to 30
+
+2		activity				activity description - values are
+									WALKING
+									WALKING_UPSTAIRS
+									WALKING_DOWNSTAIRS
+									SITTING
+									STANDING
+									LAYING
+										
+3		tBodyAccMeanX			3-axial body linear acceleration mean
+4		tBodyAccMeanY
+5		tBodyAccMeanZ
+
+6		tBodyAccStdX			3-axial body linear acceleration standard deviation 
+7		tBodyAccStdY
+8		tBodyAccStdZ
+
+9		tGravityAccMeanX		3-axial acceleration due to gravity mean
+10		tGravityAccMeanY
+11		tGravityAccMeanZ
+
+12		tGravityAccStdX			3-axial acceleration due to gravity standard deviation
+13		tGravityAccStdY
+14		tGravityAccStdZ
+
+15		tBodyAccJerkMeanX		3-axial body linear acceleration change mean
+16		tBodyAccJerkMeanY
+17		tBodyAccJerkMeanZ
+
+18		tBodyAccJerkStdX		3-axial body linear acceleration change std
+19		tBodyAccJerkStdY
+20		tBodyAccJerkStdZ
+
+21		tBodyGyroMeanX			3-axial body angular acceleration mean
+23		tBodyGyroMeanY
+23		tBodyGyroMeanZ
+
+24		tBodyGyroStdX			3-axial body angular acceleration std			
+25		tBodyGyroStdY
+26		tBodyGyroStdZ
+
+27		tBodyGyroJerkMeanX		3-axial body angular acceleration change mean
+28		tBodyGyroJerkMeanY
+29		tBodyGyroJerkMeanZ
+
+30		tBodyGyroJerkStdX		3-axial body angular acceleration change std
+31		tBodyGyroJerkStdY
+32		tBodyGyroJerkStdZ
+
+33		tBodyAccMagMean			magnitude of the body linear acceleration mean
+34		tBodyAccMagStd			magnitude of the body linear acceleration std
+
+35		tGravityAccMagMean		magnitude of acceleration due to gravity mean
+36		tGravityAccMagStd		magnitude of acceleration due to gravity std
+
+37		tBodyAccJerkMagMean		magnitude of body linear acceleration change mean
+38		tBodyAccJerkMagStd		magnitude of body linear acceleration change std
+
+39		tBodyGyroMagMean		magnitude of body angular acceleration mean
+40		tBodyGyroMagStd			magnitude of body angular acceleration std
+
+41		tBodyGyroJerkMagMean	magnitude of body angular acceleration change mean
+42		tBodyGyroJerkMagStd		magnitude of body angular acceleration change std
+
+43		fBodyAccMeanX			3-axial body linear acceleration mean
+44		fBodyAccMeanY
+45		fBodyAccMeanZ
+
+46		fBodyAccStdX			3-axial body linear acceleration std
+47		fBodyAccStdY
+48		fBodyAccStdZ
+
+49		fBodyAccJerkMeanX		3-axial body linear acceleration change mean
+50		fBodyAccJerkMeanY
+51		fBodyAccJerkMeanZ
+
+52		fBodyAccJerkStdX		3-axial body linear acceleration change std
+53		fBodyAccJerkStdY
+54		fBodyAccJerkStdZ
+
+55		fBodyGyroMeanX			3-axial body angular acceleration mean
+56		fBodyGyroMeanY
+57		fBodyGyroMeanZ
+
+58		fBodyGyroStdX			3-axial body angular acceleration std
+59		fBodyGyroStdY
+60		fBodyGyroStdZ
+
+61		fBodyAccMagMean			magnitude of body linear acceleration mean
+62		fBodyAccMagStd			magnitude of body linear acceleration mean
+
+63		fBodyAccJerkMagMean		magnitude of body linear acceleration change mean
+64		fBodyAccJerkMagStd		magnitude of body linear acceleration change std
+
+65		fBodyGyroMagMean		magnitude of body angular acceleration mean
+66		fBodyGyroMagStd			magnitude of body angular acceleration std
+
+67		fBodyGyroJerkMagMean	magnitude of body angular acceleration change mean
+68		fBodyGyroJerkMagStd		magnitude of body angular acceleration change std

@@ -31,7 +31,7 @@ testSubject <- read.table("./test/subject_test.txt")
 testActivity <- read.table("./test/y_test.txt")
 
 # combine the test data
-allTest <- cbind(testActivity, testSubject, X_test)
+allTest <- cbind(testSubject, testActivity, X_test)
 
 # remove data no longer needed
 rm(X_test, testSubject, testActivity)
@@ -44,7 +44,7 @@ trainSubject <- read.table("./train/subject_train.txt")
 trainActivity <- read.table("./train/y_train.txt")
 
 # combine the train data
-allTrain <- cbind(trainActivity, trainSubject, X_train)
+allTrain <- cbind(trainSubject, trainActivity, X_train)
 
 # remove data no longer needed
 rm(X_train, trainSubject, trainActivity)
@@ -60,14 +60,14 @@ rm(allTest, allTrain)
 #
 # create a logical vector used to select the columns for the final data set
 #
-selCols <- grepl(".*std\\(\\).*|.*mean\\(\\).*|.*meanFreq\\(\\).*", features$colname)
+selCols <- grepl(".*std\\(\\).*|.*mean\\(\\).*", features$colname)
 
 # select the activity, subject, and standard deviation and mean measurements
 allStdMean <- allData[, c(TRUE, TRUE, selCols)]
 
 # change the activity column to a factor using the
 # data from the activity_labels.txt file
-allStdMean[,1] <- factor(allStdMean[,1], levels=actLabels$actno,
+allStdMean[,2] <- factor(allStdMean[,2], levels=actLabels$actno,
                       labels=actLabels$actname)
 
 #
@@ -76,14 +76,13 @@ allStdMean[,1] <- factor(allStdMean[,1], levels=actLabels$actno,
 tidyCols <- features$colname[selCols]
 tidyCols <- sub("-std\\(\\)", "Std", tidyCols)          # change -std() to Std
 tidyCols <- sub("-mean\\(\\)", "Mean", tidyCols)        # change -mean() to Mean
-tidyCols <- sub("-meanFreq\\(\\)", "MeanFreq", tidyCols) # change meanFreq() to MeanFreq
 tidyCols <- sub("-", "", tidyCols)                      # remove -'s
 tidyCols <- sub("BodyBody", "Body", tidyCols)           # change BodyBody to Body
 
 #
 # set the names of the allStdMean dataframe
 #
-colnames(allStdMean) <- c("activity", "subject", tidyCols)
+colnames(allStdMean) <- c("subject", "activity", tidyCols)
 
 #
 # write allStdMead to a file named tidyData1.txt
@@ -94,13 +93,8 @@ write.table(allStdMean, file = "tidyData1.txt", row.name = FALSE)
 # create a dataset with the average of each variable for
 # activity and subject
 #
-tidyData2 <- group_by(allStdMean, activity, subject)    # group data by activity and subject
+tidyData2 <- group_by(allStdMean, subject, activity)    # group data by activity and subject
 tidyData2 <- summarise_each(tidyData2, funs(mean))      # calculate average for each group
-
-# change the column names
-tidyCols2 <- sub("^([f])(.*)", "avgF\\2", tidyCols)         # uppercase f at beginning of name
-tidyCols2 <- sub("^([t])(.*)", "avgT\\2", tidyCols2)        # uppercase t at beginning of name
-colnames(tidyData2) <- c("activity", "subject", tidyCols2) # set the column names
 
 #
 # write the tidyData2 data to a file
